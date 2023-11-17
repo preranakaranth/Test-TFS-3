@@ -10,11 +10,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Setup node
-      uses: actions/setup-node@v3
     - name: Run script
       run: |
         pwd
-        npm install -g bats
         bash ./CloudOps/Test.sh
-        
+  secondJob:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup node
+      uses: actions/setup-node@v3
+    - run: |
+        npm install -g bats
+        bats -v
