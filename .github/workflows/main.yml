@@ -14,6 +14,12 @@ jobs:
       run: |
         pwd
         bash ./CloudOps/Test.sh
+        echo "This is a new file" >> newfile.txt
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Newfile
+        path: ./newfile.txt
   secondJob:
     runs-on: ubuntu-latest
     steps:
@@ -22,3 +28,10 @@ jobs:
     - run: |
         npm install -g bats
         bats -v
+    - name: Download Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: Newfile
+    - run: |
+        ls
+        cat newfile.txt
