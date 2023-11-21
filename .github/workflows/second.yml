@@ -10,8 +10,8 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-    - run: echo $SAMPLE
+    - run: echo $TEST1
     - env:
         SAMPLE2: second_variable
-      run: echo $SAMPLE2
+      run: echo $SECRET_VAR
     
