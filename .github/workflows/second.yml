@@ -1,0 +1,17 @@
+name: Second
+on: 
+  push:
+    branches: [Branch2]
+
+env:
+  SAMPLE: sample_variable
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo $SAMPLE
+    - env:
+        SAMPLE2: second_variable
+      run: echo $SAMPLE2
+    
